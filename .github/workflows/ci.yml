@@ -38,8 +38,10 @@ jobs:
         with:
           context: .
           file: WebApplication1/Dockerfile
-          load: true
-          tags: argocd-course-webapp:${{ github.sha }}
+          push: true
+          tags: |
+              argocd-course-webapp:${{ github.sha }}
+              argocd-course-webapp:latest
   promote-to-dev-environment:
     runs-on: ubuntu-latest
     needs: docker-build-push
